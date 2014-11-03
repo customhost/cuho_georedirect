@@ -3,7 +3,9 @@ Module using GeoIP database to detect visitor's country.
 
 <h4>Change log</h4>
 <b>v1.1</b>: Compatibility with ExpressionEngine 2.4 - 2.7
+<br/>
 <b>v1.2</b>: Rule removal bugfix for webkit browsers ( Chrome, Safari )
+<br/>
 <b>v1.3</b>: Added "redirect once" rule
 
 <h4>1. Installing module</h4>
