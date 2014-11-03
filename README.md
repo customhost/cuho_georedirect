@@ -1,4 +1,4 @@
-This is a pretty-simple but powerful module which gives you a tool to redirect visitors from each country to the different URLs.
+This is a pretty-simple but powerful ExpressionEngine addon which gives you a tool to redirect visitors from each country to the different URLs.
 Module using GeoIP database to detect visitor's country.
 
 <h4>Change log</h4>
