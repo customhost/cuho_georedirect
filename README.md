@@ -7,6 +7,8 @@ Module using GeoIP database to detect visitor's country.
 <b>v1.2</b>: Rule removal bugfix for webkit browsers ( Chrome, Safari )
 <br/>
 <b>v1.3</b>: Added "redirect once" rule
+<br/>
+<b>v1.4</b>: GPL License
 
 <h4>1. Installing module</h4>
 Unpack archive and copy catalog "cuho_georedirect" to your site catalog "system/expressionengine/third_party"
