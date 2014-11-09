@@ -81,6 +81,7 @@ Please note: "redirect me" and "never ask" will be remembered for particular bro
 #### 8. Desing: change pop-up box styling
 
 Pop-up box styling represented by a couple rules:
+
 `#cuho_georedirect_content` &mdash; mail content block, you can define message text colour and font size here.
 
 `#cuho_georedirect_content h4` &mdash; message title style, you can change padding, marging, colour and font parameters.
