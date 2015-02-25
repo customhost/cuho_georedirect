@@ -329,10 +329,8 @@
 	
 </script>
 
-<!-- <form action="" method="POST" enctype="multipart/form-data"> -->
-<?php
-echo $formtag;
-?>
+<?php echo form_open_multipart( "C=addons_modules{$AMP}M=show_module_cp{$AMP}module=cuho_georedirect"); ?>
+
 
 <div>
 	<h2>Configure your redirects</h2>
@@ -459,10 +457,13 @@ echo $formtag;
 	<br>
 	<hr>
 	<br>
-	
-	<input type="submit" value="Save changes" name="save" />
+
+	<?=form_submit('save', lang('Save changes'), 'class="submit"')?>
+	&nbsp;
+	<?=form_submit('cancel', lang('Cancel'), 'class="submit"')?>
+
 </div>
-</form>
+<?php echo form_close(); ?>
 
 <?php
 	function drawCountries( $countries_list, $select_iso = null ) {

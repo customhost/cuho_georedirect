@@ -11,6 +11,8 @@ Module using GeoIP database to detect visitor's country.
 
 **v1.4**: GPL License
 
+**v1.5**: Saving form fix for EE 2.9.2
+
 #### 1. Installing module
 
 Unpack archive and copy catalog "cuho_georedirect" to your site catalog "system/expressionengine/third_party"

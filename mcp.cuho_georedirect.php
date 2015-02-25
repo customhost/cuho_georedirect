@@ -43,20 +43,16 @@
 			$this->EE->load->helper('form');
 			
 			$current_base = str_replace( 'index.php', '', $this->EE->functions->fetch_current_uri() );
-			
-			$module_cp_url = "{$current_base}{$_SERVER['REQUEST_URI']}";
-			
-			$form = $this->EE->functions->form_declaration(
-				array(
-					'action' => $module_cp_url,
-					'id' => 'rules_form',
-					'hidden_fields' => array(
-						'XID' => XID_SECURE_HASH,
-					)
-				)
+
+			$BASE = BASE;
+			$AMP = AMP;
+
+
+			$vars = array(
+				'ee' => $this->EE,
+				'BASE' => $BASE,
+				'AMP' => $AMP
 			);
-			
-			$vars = array( 'ee' => $this->EE );
 			
 			// Get redirect method
     		$result = $this->EE->db->query( "SELECT `value` FROM `exp_cuho_georedirect_settings` WHERE `key` = 'method'" );
@@ -77,12 +73,12 @@
 			
 			$vars['no_geoip'] = !$this->cuho_geoip->isAvailable();
 			$vars['method'] = $this->method;
-			$vars['formtag'] = $form;
 			
 			$vars['rules'] = $rules;
 			
 			if( !$vars['no_geoip'] ) {
 				if( $this->EE->input->post('save') ) {
+					$ok = false;
 					
 					// Save redirect method
 					$method = intval( $_POST['method'] );
@@ -104,11 +100,18 @@
 							$text = $this->EE->db->escape( $_POST['text'][ $id ] );
 							
 							
-							$this->EE->db->query(  "INSERT INTO `exp_cuho_georedirect_rules` SET `country` = {$country}, `url` = {$url}, `title` = {$title}, `text` = {$text}" );
+							$ok = $this->EE->db->query(  "INSERT INTO `exp_cuho_georedirect_rules` SET `country` = {$country}, `url` = {$url}, `title` = {$title}, `text` = {$text}" );
 						}
 					}
+
+					if( $ok ) {
+						ee()->session->set_flashdata('message_success', lang('Rules settings saved') );
+					}
+					else {
+						ee()->session->set_flashdata('message_error', lang('Unable to save rules settings') );
+					}
 					
-					$this->EE->functions->redirect( $module_cp_url );
+					$this->EE->functions->redirect( "{$BASE}{$AMP}C=addons_modules{$AMP}M=show_module_cp{$AMP}module=cuho_georedirect" );
 				}
 			}
 			
